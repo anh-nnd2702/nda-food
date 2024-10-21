@@ -1,0 +1,23 @@
+.main-layout {
+  min-height: 100vh;
+
+  main {
+    display: flex;
+    flex-direction: row;
+    #sideBar {
+      width: 20%;
+      min-width: 200px;
+    }
+    .main-content {
+    }
+  }
+}
+
+#appHeader {
+  background-color: #fafafa;
+  height: 62px;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  align-items: center;
+}
