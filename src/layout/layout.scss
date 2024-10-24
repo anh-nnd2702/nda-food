@@ -1,12 +1,24 @@
 .main-layout {
   min-height: 100vh;
-
+  background-color: var(--primary-bg);
   main {
+    padding-top: 14px;
     display: flex;
     flex-direction: row;
     #sideBar {
       width: 20%;
       min-width: 200px;
+        .sidebar__selector {
+            margin-bottom: 10px;
+            width: 60%;
+            margin-left: 20%;
+            color: var(--primary-text);
+        
+            ul {
+              margin: 0px !important;
+              padding: 0 !important;
+            }
+          }
     }
     .main-content {
     }
@@ -14,10 +26,18 @@
 }
 
 #appHeader {
-  background-color: #fafafa;
-  height: 62px;
+  background-color: var(--primary-text);
+    height: 72px;
   position: sticky;
   top: 0;
   text-align: center;
   align-items: center;
+  z-index: 999;
+  
+    a {
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      color: var(--primary-bg);
+    }
 }

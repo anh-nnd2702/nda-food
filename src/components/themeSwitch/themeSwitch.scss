@@ -1,0 +1,43 @@
+.theme-switch {
+    width: 40px;
+    height: fit-content;
+    border: solid 1px var(--primary-bg);
+    
+    button{
+      font-size: 12px;
+      text-align: center;
+      padding: 0;
+      border: none;
+      i{
+        margin: 0;
+        width: 18px;
+      }
+    }  
+  }
+  
+  .switch--dark{
+    background-color: var(--primary-text);
+    border-radius: 14px;
+    text-align: left;    
+  
+    .theme-button--dark{
+      border-radius: 50%;
+      padding: 2px;
+      margin: 2px;
+      color: var(--primary);
+    }
+  }
+  
+  .switch--light {
+    background-color: var(--primary-text);
+    border-radius: 14px;
+    text-align: right;
+  
+    .theme-button--light {
+      border-radius: 50%;
+      padding: 2px;
+      margin: 2px;
+      color: var(--primary);
+    }
+  }
+  
