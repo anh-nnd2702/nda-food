@@ -27,7 +27,7 @@ function App() {
           ),
         },
         {
-          path: "/meal",
+          path: "/meal-detail",
           element: (
             <Suspense fallback={<Loading />}>
               <MealDetail />

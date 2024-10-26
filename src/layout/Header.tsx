@@ -1,12 +1,24 @@
 import ThemeSwitch from "components/themeSwitch/ThemeSwitch";
 import "./layout.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("light");
   const handleChangeTheme = (newTheme: string) => {
-    setTheme(newTheme)
-  }
+    document.documentElement.setAttribute("nda-food-color-scheme", newTheme);
+    localStorage.setItem("nf-theme", newTheme);
+    setTheme(newTheme);
+  };
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("nf-theme");
+    if (currentTheme && currentTheme === "dark") {
+      setTheme("dark");
+      document.documentElement.setAttribute("nda-food-color-scheme", "dark");
+    } else {
+      setTheme("light");
+      document.documentElement.setAttribute("nda-food-color-scheme", "light");
+    }
+  }, []);
   return (
     <div id="appHeader" className="d-flex flex-row">
       <div className="col-2">
@@ -15,10 +27,13 @@ const Header = () => {
           <span className="ms-1">NdaFoods</span>
         </a>
       </div>
-      <div className="col-8">
-      </div>
+      <div className="col-8"></div>
       <div className="col-1">
-        <ThemeSwitch currentTheme={theme} onChangeTheme={handleChangeTheme} sx={"ms-auto me-0"}/>
+        <ThemeSwitch
+          currentTheme={theme}
+          onChangeTheme={handleChangeTheme}
+          sx={"ms-auto me-0"}
+        />
       </div>
     </div>
   );
