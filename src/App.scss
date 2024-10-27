@@ -1,8 +1,8 @@
-@import "node_modules/bootstrap/scss/bootstrap";
+@use "node_modules/bootstrap/scss/bootstrap";
 #root {
   margin: 0 auto;
   box-sizing: border-box;
   ul {
-      list-style-type: none;
-    }
+    list-style-type: none;
+  }
 }
