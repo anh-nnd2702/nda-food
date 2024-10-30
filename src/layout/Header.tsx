@@ -1,4 +1,5 @@
 import ThemeSwitch from "components/themeSwitch/ThemeSwitch";
+import { GoogleLogin } from "@react-oauth/google";
 import "./layout.scss";
 import { useEffect, useState } from "react";
 
@@ -34,6 +35,16 @@ const Header = () => {
           onChangeTheme={handleChangeTheme}
           sx={"ms-auto me-0"}
         />
+      </div>
+      <div className="col-2">
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            console.log(credentialResponse);
+          }}
+          onError={() => {
+            console.log("failed");
+          }}
+        ></GoogleLogin>
       </div>
     </div>
   );
