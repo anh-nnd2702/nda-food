@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_BASE_URL } from "constants/apiConstant";
 import { isUndefinedOrNull } from "utils/helper";
 const apiInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: "https://www.themealdb.com/api/json/v1/1/",
   headers: {
     "Content-Type": "application/json",
   },
