@@ -44,3 +44,10 @@ export const getListIngredient = async () => {
   });
   return result.data;
 };
+
+export const getMealById = async (id: string) =>{
+  const result = await makeGet("/lookup.php", {
+    i: id
+  });
+  return result.data;
+};

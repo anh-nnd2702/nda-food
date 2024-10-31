@@ -28,14 +28,7 @@ const Header = () => {
           <span className="ms-1">NdaFoods</span>
         </a>
       </div>
-      <div className="col-8"></div>
-      <div className="col-1">
-        <ThemeSwitch
-          currentTheme={theme}
-          onChangeTheme={handleChangeTheme}
-          sx={"ms-auto me-0"}
-        />
-      </div>
+      <div className="col-7"></div>
       <div className="col-2">
         <GoogleLogin
           onSuccess={(credentialResponse) => {
@@ -45,6 +38,13 @@ const Header = () => {
             console.log("failed");
           }}
         ></GoogleLogin>
+      </div>
+      <div className="col-1">
+        <ThemeSwitch
+          currentTheme={theme}
+          onChangeTheme={handleChangeTheme}
+          sx={"ms-auto me-4"}
+        />
       </div>
     </div>
   );
