@@ -9,7 +9,11 @@ type areaType = {
   strArea: string;
 };
 
-const Sidebar = () => {
+type SidebarPropType = {
+  isShowMenu: boolean;
+};
+
+const Sidebar = (props: SidebarPropType) => {
   const [categories, setCategories] = useState<categoryType[]>([]);
   const [areas, setAreas] = useState<areaType[]>([]);
   useEffect(() => {
@@ -42,7 +46,7 @@ const Sidebar = () => {
     [areas]
   );
   return (
-    <div id="sideBar">
+    <div id="sideBar" className={props.isShowMenu ? "show" : "hide"}>
       <div className="sidebar__selector">
         <NfAccordion
           id="categoryAcd"

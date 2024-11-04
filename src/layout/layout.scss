@@ -3,15 +3,22 @@
   background-color: var(--primary-bg);
   main {
     padding-top: 34px;
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    height: calc(100vh - 72px);
+    overflow: auto;
     #sideBar {
-      width: 20%;
-      min-width: 200px;
+      position: absolute;
+      z-index: 9;
+      top: 0px;
+      min-width: 240px;
+      max-width: fit-content;
+      height: 100%;
+      max-height: calc(100vh - 72px);
+      overflow: auto;
+      padding: 24px;
+      background-color: var(--primary-text);
       .sidebar__selector {
         margin-bottom: 10px;
-        width: 80%;
-        margin-left: 20%;
         color: var(--primary-text);
 
         ul {
@@ -19,9 +26,17 @@
           padding: 0 !important;
         }
       }
+      &.hide {
+        left: -100%;
+      }
+      &.show {
+        left: 0px;
+      }
     }
+
     .main-content {
       width: 100%;
+      overflow: hidden;
     }
   }
 }

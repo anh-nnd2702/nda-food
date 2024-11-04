@@ -1,9 +1,14 @@
 import ThemeSwitch from "components/themeSwitch/ThemeSwitch";
-import { GoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin } from "@react-oauth/google";
 import "./layout.scss";
 import { useEffect, useState } from "react";
 
-const Header = () => {
+type HeaderPropType = {
+  onClickMenu: () => void;
+  isShowMenu: boolean;
+};
+
+const Header = (props: HeaderPropType) => {
   const [theme, setTheme] = useState("light");
   const handleChangeTheme = (newTheme: string) => {
     document.documentElement.setAttribute("nda-food-color-scheme", newTheme);
@@ -20,25 +25,26 @@ const Header = () => {
       document.documentElement.setAttribute("nda-food-color-scheme", "light");
     }
   }, []);
+
   return (
     <div id="appHeader" className="d-flex flex-row">
-      <div className="col-2">
+      <div className="col-1 ps-2">
+        <button onClick={props.onClickMenu}>
+          {props.isShowMenu ? (
+            <i className="fa-solid fa-x"></i>
+          ) : (
+            <i className="fa-solid fa-bars"></i>
+          )}
+        </button>
+      </div>
+      <div className="col-lg-1 col-md-2 ps-1">
         <a href="/">
           <img src={"vite.svg"} alt="App logo"></img>
           <span className="ms-1">NdaFoods</span>
         </a>
       </div>
-      <div className="col-7"></div>
-      <div className="col-2">
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("failed");
-          }}
-        ></GoogleLogin>
-      </div>
+      <div className="col-6"></div>
+      <div className="col-2"></div>
       <div className="col-1">
         <ThemeSwitch
           currentTheme={theme}
