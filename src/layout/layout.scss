@@ -10,10 +10,9 @@
       position: absolute;
       z-index: 9;
       top: 0px;
-      min-width: 240px;
-      max-width: fit-content;
+      width: 250px;
       height: 100%;
-      max-height: calc(100vh - 72px);
+      min-height: calc(100vh - 72px);
       overflow: auto;
       padding: 24px;
       background-color: var(--primary-text);
@@ -49,6 +48,24 @@
   text-align: center;
   align-items: center;
   z-index: 999;
+
+  #menuBtn {
+    color: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-text);
+    i {
+      transition: all 0.2s;
+    }
+  }
+
+  #menuBtn:hover {
+    background-color: var(--primary--hover);
+    color: var(--primary-bg);
+    transition: all 0.5s;
+  }
 
   a {
     text-decoration: none;

@@ -1,10 +1,10 @@
 .home-page {
-  width: 70%;
-  margin-left: 60px;
+  width: calc((2 / 3) * 100%);
+  margin: 0 auto;
   .meal-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 10px;
     column-gap: 14px;
   }
 }

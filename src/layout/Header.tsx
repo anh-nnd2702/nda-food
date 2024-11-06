@@ -28,8 +28,8 @@ const Header = (props: HeaderPropType) => {
 
   return (
     <div id="appHeader" className="d-flex flex-row">
-      <div className="col-1 ps-2">
-        <button onClick={props.onClickMenu}>
+      <div className="col-lg-2 text-end pe-2">
+        <button onClick={props.onClickMenu} id="menuBtn">
           {props.isShowMenu ? (
             <i className="fa-solid fa-x"></i>
           ) : (
@@ -37,19 +37,18 @@ const Header = (props: HeaderPropType) => {
           )}
         </button>
       </div>
-      <div className="col-lg-1 col-md-2 ps-1">
+      <div className="col-lg-1 col-md-2 ps-0">
         <a href="/">
           <img src={"vite.svg"} alt="App logo"></img>
           <span className="ms-1">NdaFoods</span>
         </a>
       </div>
-      <div className="col-6"></div>
-      <div className="col-2"></div>
-      <div className="col-1">
+      <div className="col-lg-6"></div>
+      <div className="col-lg-1 text-end">
         <ThemeSwitch
           currentTheme={theme}
           onChangeTheme={handleChangeTheme}
-          sx={"ms-auto me-4"}
+          sx={"ms-auto me-2"}
         />
       </div>
     </div>
