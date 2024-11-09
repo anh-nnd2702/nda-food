@@ -14,20 +14,26 @@ type MealType = {
   strMealThumb: string;
 };
 
-const MealCard = (props: { meal: MealType; key: string }) => {
+type MealCardPropType = {
+  meal: MealType;
+  key: string;
+};
+
+const MealCard = (props: MealCardPropType) => {
   const navigate = useNavigate();
   const { meal } = props;
   return (
     <Card
       key={meal.idMeal}
       id={meal.idMeal}
-      sx={{ position: "relative", flexGrow: "1", maxWidth: "300px" }}
+      sx={{ position: "relative", flexGrow: "1", height: "100%" }}
     >
       <CardMedia
         image={meal.strMealThumb}
         sx={{
-          height: "200px",
+          // height: "200px",
           // width: "380px",
+          height: "100%",
           backgroundSize: "cover",
         }}
       >
@@ -41,17 +47,22 @@ const MealCard = (props: { meal: MealType; key: string }) => {
             overflow: "hidden",
           }}
         >
-          <h5 className="card__overlay-title">{meal.strMeal}</h5>
+          <h5
+            className="card__overlay-title"
+            onClick={() => navigate(`/meal-detail/${meal.idMeal}`)}
+          >
+            {meal.strMeal}
+          </h5>
         </Typography>
       </CardMedia>
-      <CardActions>
+      {/* <CardActions>
         <Button
           onClick={() => navigate(`/meal-detail/${meal.idMeal}`)}
           size={"small"}
         >
           Share
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

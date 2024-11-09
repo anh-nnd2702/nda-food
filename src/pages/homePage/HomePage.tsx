@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMealByFilter } from "services/mealService";
 import "./homePage.scss";
 import MealCard from "components/mealCard/MealCard";
+import MealContainer from "components/mealCard/MealContainer";
 
 export type MealType = {
   idMeal: string;
@@ -20,14 +21,16 @@ const HomePage = () => {
     };
     fetchCategories();
   }, []);
+
   return (
     <div className="home-page">
-      <div className="meal-list">
+      {meals.length && <MealContainer mealList={meals} listType="left-7" />}
+      {/* <div className="meal-list">
         {meals &&
           meals.map((meal) => (
             <MealCard meal={meal} key={meal.idMeal}></MealCard>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

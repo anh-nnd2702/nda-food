@@ -1,0 +1,15 @@
+.meal-container {
+  display: flex;
+}
+
+.card-wrapper {
+  &--square {
+    aspect-ratio: 1 / 1;
+  }
+  &--rec-2-3 {
+    aspect-ratio: 2 / 3;
+  }
+  &--rec-1-2 {
+    aspect-ratio: 2 / 1;
+  }
+}
