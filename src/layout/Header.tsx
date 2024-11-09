@@ -28,10 +28,10 @@ const Header = (props: HeaderPropType) => {
 
   return (
     <div id="appHeader" className="d-flex flex-row">
-      <div className="col-lg-2 text-end pe-2">
+      <div className="col-lg-2 text-end px-2">
         <button onClick={props.onClickMenu} id="menuBtn">
           {props.isShowMenu ? (
-            <i className="fa-solid fa-x"></i>
+            <i className="fa-solid fa-close"></i>
           ) : (
             <i className="fa-solid fa-bars"></i>
           )}

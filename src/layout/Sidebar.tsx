@@ -47,21 +47,23 @@ const Sidebar = (props: SidebarPropType) => {
   );
   return (
     <div id="sideBar" className={props.isShowMenu ? "show" : "hide"}>
-      <div className="sidebar__selector">
-        <NfAccordion
-          id="categoryAcd"
-          summary={<h6>Categories</h6>}
-          detail={categoriesList}
-        ></NfAccordion>
+      <div className="sidebar__menu">
+        <div className="sidebar__selector">
+          <NfAccordion
+            id="categoryAcd"
+            summary={<h6>Categories</h6>}
+            detail={categoriesList}
+          ></NfAccordion>
+        </div>
+        <div className="sidebar__selector">
+          <NfAccordion
+            id="areaAcd"
+            summary={<h6>Areas</h6>}
+            detail={areaList}
+          ></NfAccordion>
+        </div>
+        {/* <div className="sidebar__selector"></div> */}
       </div>
-      <div className="sidebar__selector">
-        <NfAccordion
-          id="areaAcd"
-          summary={<h6>Areas</h6>}
-          detail={areaList}
-        ></NfAccordion>
-      </div>
-      <div className="sidebar__selector"></div>
     </div>
   );
 };

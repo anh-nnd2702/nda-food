@@ -2,9 +2,11 @@
   width: calc((2 / 3) * 100%);
   margin: 0 auto;
   .meal-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
+    // row-gap: 10px;
+    // column-gap: 14px;
+    gap: 14px;
   }
 }

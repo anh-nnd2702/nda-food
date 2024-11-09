@@ -3,7 +3,7 @@ import { getMealByFilter } from "services/mealService";
 import "./homePage.scss";
 import MealCard from "components/mealCard/MealCard";
 
-type MealType = {
+export type MealType = {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
