@@ -3,13 +3,24 @@
 }
 
 .card-wrapper {
-  &--square {
-    aspect-ratio: 1 / 1;
-  }
-  &--rec-2-3 {
-    aspect-ratio: 2 / 3;
-  }
-  &--rec-1-2 {
-    aspect-ratio: 2 / 1;
-  }
+  padding: 8px;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+.rec-2-3 {
+  aspect-ratio: 2 / 3;
+}
+.rec-2-1 {
+  aspect-ratio: 2 / 1;
+}
+.rec-3-4 {
+  aspect-ratio: 3 / 4;
+}
+.rec-1-2 {
+  aspect-ratio: 1 / 2;
+}
+.rec-4-3 {
+  aspect-ratio: 4 / 3;
 }

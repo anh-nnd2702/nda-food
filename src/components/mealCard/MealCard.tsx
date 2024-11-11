@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardActions,
-  CardMedia,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Card, CardActions, CardMedia, Typography, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./mealCard.scss";
 
@@ -23,39 +17,53 @@ const MealCard = (props: MealCardPropType) => {
   const navigate = useNavigate();
   const { meal } = props;
   return (
-    <Card
-      key={meal.idMeal}
-      id={meal.idMeal}
-      sx={{ position: "relative", flexGrow: "1", height: "100%" }}
+    <Paper
+      elevation={4}
+      sx={{
+        width: "100%",
+        height: "100%",
+        borderRadius: "10px",
+        border: "solid 1px #fcfcfc",
+      }}
     >
-      <CardMedia
-        image={meal.strMealThumb}
+      <Card
+        key={meal.idMeal}
+        id={meal.idMeal}
         sx={{
-          // height: "200px",
-          // width: "380px",
+          position: "relative",
+          flexGrow: "1",
           height: "100%",
-          backgroundSize: "cover",
+          borderRadius: "10px",
         }}
       >
-        <Typography
-          gutterBottom
-          component={"div"}
+        <CardMedia
+          image={meal.strMealThumb}
           sx={{
+            // height: "200px",
+            // width: "380px",
             height: "100%",
-            display: "flex",
-            margin: "0",
-            overflow: "hidden",
+            backgroundSize: "cover",
           }}
         >
-          <h5
-            className="card__overlay-title"
-            onClick={() => navigate(`/meal-detail/${meal.idMeal}`)}
+          <Typography
+            gutterBottom
+            component={"div"}
+            sx={{
+              height: "100%",
+              display: "flex",
+              margin: "0",
+              overflow: "hidden",
+            }}
           >
-            {meal.strMeal}
-          </h5>
-        </Typography>
-      </CardMedia>
-      {/* <CardActions>
+            <h5
+              className="card__overlay-title"
+              onClick={() => navigate(`/meal-detail/${meal.idMeal}`)}
+            >
+              {meal.strMeal}
+            </h5>
+          </Typography>
+        </CardMedia>
+        {/* <CardActions>
         <Button
           onClick={() => navigate(`/meal-detail/${meal.idMeal}`)}
           size={"small"}
@@ -63,7 +71,8 @@ const MealCard = (props: MealCardPropType) => {
           Share
         </Button>
       </CardActions> */}
-    </Card>
+      </Card>
+    </Paper>
   );
 };
 

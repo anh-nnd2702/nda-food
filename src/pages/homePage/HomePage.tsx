@@ -24,7 +24,11 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      {meals.length && <MealContainer mealList={meals} listType="left-7" />}
+      {meals.length > 0 ? (
+        <MealContainer mealList={meals} listType="left-7" />
+      ) : (
+        ""
+      )}
       {/* <div className="meal-list">
         {meals &&
           meals.map((meal) => (
