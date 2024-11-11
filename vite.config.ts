@@ -20,8 +20,7 @@ export default defineConfig({
       services: "/src/services",
       pages: "/src/pages",
       utils: "/src/utils",
-      reducers: "/src/redux/reducers",
-      store: "/src/redux/store",
+      store: "/src/store",
     },
   },
 });
