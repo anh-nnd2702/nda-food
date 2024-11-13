@@ -3,6 +3,8 @@ import { getMealByFilter } from "services/mealService";
 import "./homePage.scss";
 import MealCard from "components/mealCard/MealCard";
 import MealContainer from "components/mealCard/MealContainer";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { setParams, resetParams, getListMealAsync } from "store/mealSlice";
 
 export type MealType = {
   idMeal: string;
@@ -11,17 +13,22 @@ export type MealType = {
 };
 
 const HomePage = () => {
-  const [meals, setMeals] = useState<MealType[]>([]);
+  // const [meals, setMeals] = useState<MealType[]>([]);
+  const dispatch = useAppDispatch();
+  const dataMeal = useAppSelector((state) => state.meal);
+  const { meals, loading, error, filters } = dataMeal;
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      getMealByFilter({
+    dispatch(
+      getListMealAsync({
         filterType: "category",
         category: "beef",
-      }).then((data) => setMeals(data.meals));
-    };
-    fetchCategories();
-  }, []);
-
+      })
+    );
+    // return dispatch(resetParams);
+  }, [dispatch]);
+  if (loading) return <div>Loading....</div>;
+  if (error) return <div>{error}</div>;
   return (
     <div className="home-page">
       {meals.length > 0 ? (

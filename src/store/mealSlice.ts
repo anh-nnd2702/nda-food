@@ -15,7 +15,7 @@ const initialState = {
   error: "" as any,
 };
 
-const getListMealAsync = createAsyncThunk(
+export const getListMealAsync = createAsyncThunk(
   "meal/getListMeal",
   async (filterParams: MealParamType) => {
     const res = await getMealByFilter({
@@ -23,13 +23,7 @@ const getListMealAsync = createAsyncThunk(
       category: filterParams.category,
       area: filterParams.area,
       ingredient: filterParams.ingredient,
-    })
-      .then((res) => {
-        return res.meals;
-      })
-      .catch((error) => {
-        return error.message || "Failed to fetch meals";
-      });
+    });
     return res;
   }
 );
@@ -39,24 +33,29 @@ const MealSlice = createSlice({
   initialState: initialState,
   reducers: {
     setParams: (state, action) => {
-      state = { ...state, filters: { ...action.payload } };
+      state.filters = { ...action.payload };
     },
     resetParams: (state, action) => {
-      state = { ...initialState };
+      state.filters = { ...initialState.filters };
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(getListMealAsync.pending, (state, action) => {
-        state = { ...state, loading: true, error: "" };
+        state.loading = true;
       })
       .addCase(getListMealAsync.fulfilled, (state, action) => {
-        state = { ...state, loading: false, meals: action.payload, error: "" };
+        state.loading = false;
+        state.meals = action.payload.meals;
+        state.error = "";
       })
       .addCase(getListMealAsync.rejected, (state, action) => {
-        state = { ...state, loading: false, error: action.payload };
+        state.error = action.error.message;
+        state.loading = false;
       });
   },
 });
 
+const { actions, reducer } = MealSlice;
+export const { setParams, resetParams } = actions;
 export default MealSlice;
