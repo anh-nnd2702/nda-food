@@ -32,7 +32,12 @@ const HomePage = () => {
   return (
     <div className="home-page">
       {meals.length > 0 ? (
-        <MealContainer mealList={meals} listType="left-7" />
+        <MealContainer mealList={meals.slice(0, 6)} listType="left-7" />
+      ) : (
+        ""
+      )}
+      {meals.length > 6 ? (
+        <MealContainer mealList={meals.slice(6, 12)} listType="left-7" />
       ) : (
         ""
       )}
