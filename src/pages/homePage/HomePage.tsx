@@ -5,6 +5,7 @@ import MealCard from "components/mealCard/MealCard";
 import MealContainer from "components/mealCard/MealContainer";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { setParams, resetParams, getListMealAsync } from "store/mealSlice";
+import Loading from "components/common/loading/Loading";
 
 export type MealType = {
   idMeal: string;
@@ -27,7 +28,7 @@ const HomePage = () => {
     );
     // return dispatch(resetParams);
   }, [dispatch]);
-  if (loading) return <div>Loading....</div>;
+  if (loading) return <Loading />;
   if (error) return <div>{error}</div>;
   return (
     <div className="home-page">
