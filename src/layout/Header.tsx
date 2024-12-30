@@ -1,6 +1,7 @@
 import ThemeSwitch from "components/themeSwitch/ThemeSwitch";
 // import { GoogleLogin } from "@react-oauth/google";
 import "./layout.scss";
+import appLogo from "assets/vite.svg";
 import { useEffect, useState } from "react";
 
 type HeaderPropType = {
@@ -39,7 +40,7 @@ const Header = (props: HeaderPropType) => {
       </div>
       <div className="col-lg-1 col-md-2 ps-0">
         <a href="/">
-          <img src={"vite.svg"} alt="App logo"></img>
+          <img src={appLogo} alt="App logo"></img>
           <span className="ms-1">NdaFoods</span>
         </a>
       </div>

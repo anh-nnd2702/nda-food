@@ -9,7 +9,7 @@ type MealContainerPropType = {
 };
 const MealContainer = (props: MealContainerPropType) => {
   const { mealList, listType } = props;
-
+  console.log(mealList)
   return (
     <div className="meal-container col-lg-12">
       <div className="col-lg-3 col-md-">

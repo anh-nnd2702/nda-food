@@ -1,0 +1,26 @@
+.recipe-table{
+        color: var(--primary-text);
+    label{
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+    table{
+        padding: 8px;
+        border: solid 1px var(--primary);
+        margin: 24px 0px;
+        border-radius: 14px;
+        thead{
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        tr{
+            td:nth-child(2n){
+                padding: 4px 24px 4px 36px;
+            }
+            td:nth-child(2n+1){
+                padding: 4px 36px 4px 24px;
+            }
+            font-size: 1.2rem
+        }
+    }
+}

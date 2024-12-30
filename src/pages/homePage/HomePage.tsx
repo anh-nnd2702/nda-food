@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { getMealByFilter } from "services/mealService";
 import "./homePage.scss";
 import MealCard from "components/mealCard/MealCard";
 import MealContainer from "components/mealCard/MealContainer";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { setParams, resetParams, getListMealAsync } from "store/mealSlice";
+import Loading from "components/common/loading/Loading";
 
 export type MealType = {
   idMeal: string;
@@ -11,30 +14,34 @@ export type MealType = {
 };
 
 const HomePage = () => {
-  const [meals, setMeals] = useState<MealType[]>([]);
+  // const [meals, setMeals] = useState<MealType[]>([]);
+  const dispatch = useAppDispatch();
+  const dataMeal = useAppSelector((state) => state.meal);
+  const { meals, loading, error, filters } = dataMeal;
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      getMealByFilter({
+    dispatch(
+      getListMealAsync({
         filterType: "category",
         category: "beef",
-      }).then((data) => setMeals(data.meals));
-    };
-    fetchCategories();
-  }, []);
-
-  return (
+      })
+    );
+    // return dispatch(resetParams);
+  }, [dispatch]);
+  if (loading) return <Loading />;
+  if (error) return <div>{error}</div>;
+  const renderListMeal = () => {
+    const ListContainer: ReactElement[] = [];
+    const blockCount = (meals.length/6) * 6;
+    for(let mId = 0; mId < blockCount-6; mId+=6){
+      const mealContainer = <MealContainer mealList={meals.slice(mId, mId+6)} listType="left-7" />
+      ListContainer.push(mealContainer)
+    }
+    return ListContainer;
+  }
+  return ( 
     <div className="home-page">
-      {meals.length > 0 ? (
-        <MealContainer mealList={meals} listType="left-7" />
-      ) : (
-        ""
-      )}
-      {/* <div className="meal-list">
-        {meals &&
-          meals.map((meal) => (
-            <MealCard meal={meal} key={meal.idMeal}></MealCard>
-          ))}
-      </div> */}
+      {renderListMeal()}
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { Provider } from "react-redux";
 import "./App.scss";
 import ErrorPage from "pages/error/ErrorPage";
 import Layout from "layout/Layout";
 import Loading from "components/common/loading/Loading";
+import store from "store/store";
 
 function App() {
   const Homepage = React.lazy(() => import("pages/homePage/HomePage"));
@@ -37,7 +38,11 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
+  );
 }
 
 export default App;

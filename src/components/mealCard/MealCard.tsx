@@ -1,4 +1,4 @@
-import { Card, CardActions, CardMedia, Typography, Paper } from "@mui/material";
+import { Card, CardMedia, Typography, Paper } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./mealCard.scss";
 
