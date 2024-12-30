@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { getMealByFilter } from "services/mealService";
 import "./homePage.scss";
 import MealCard from "components/mealCard/MealCard";
@@ -30,24 +30,18 @@ const HomePage = () => {
   }, [dispatch]);
   if (loading) return <Loading />;
   if (error) return <div>{error}</div>;
-  return (
+  const renderListMeal = () => {
+    const ListContainer: ReactElement[] = [];
+    const blockCount = (meals.length/6) * 6;
+    for(let mId = 0; mId < blockCount-6; mId+=6){
+      const mealContainer = <MealContainer mealList={meals.slice(mId, mId+6)} listType="left-7" />
+      ListContainer.push(mealContainer)
+    }
+    return ListContainer;
+  }
+  return ( 
     <div className="home-page">
-      {meals.length > 0 ? (
-        <MealContainer mealList={meals.slice(0, 6)} listType="left-7" />
-      ) : (
-        ""
-      )}
-      {meals.length > 6 ? (
-        <MealContainer mealList={meals.slice(6, 12)} listType="left-7" />
-      ) : (
-        ""
-      )}
-      {/* <div className="meal-list">
-        {meals &&
-          meals.map((meal) => (
-            <MealCard meal={meal} key={meal.idMeal}></MealCard>
-          ))}
-      </div> */}
+      {renderListMeal()}
     </div>
   );
 };
